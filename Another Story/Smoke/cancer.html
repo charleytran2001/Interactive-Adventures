@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Another Story</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <p id="status">You got lung cancer</p>
+    <p id="chance"></p>
+    <a href="#" id="resultAnchor"><p id="result"></p></a>
+    
+    <script>
+        // RNG System
+        var rng = Math.round(Math.random() * 100);
+        console.log(rng);
+
+        var chance = Math.round(Math.random() * (max - min + 1)) + min;
+
+        // RNG for survival.
+        if(rng < 94) {
+            // Changes p tag
+            var pTag = document.getElementById("status");
+            var text = document.createTextNode(" and didn't make it. THE END");
+            pTag.appendChild(text);
+
+            // Displays survival %
+            var chance = document.getElementById("chance");
+            var survivalChance = document.createTextNode("You had a " + rng + "% chance of survival.");
+            chance.appendChild(survivalChance);
+
+            // Changes anchor tag
+            var pResult = document.getElementById("result");
+            var resultText = document.createTextNode("Restart");
+            pResult.appendChild(resultText);
+
+            document.getElementById("resultAnchor").href="../index.html";
+
+        } else {
+            var pTag = document.getElementById("status");
+            var text = document.createTextNode(", but you survived through it.");
+            pTag.appendChild(text);
+
+            // Displays survival %
+            var chance = document.getElementById("chance");
+            var survivalChance = document.createTextNode("You had a " + rng + "% chance of survival.");
+            chance.appendChild(survivalChance);
+
+            var pResult = document.getElementById("result");
+            var resultText = document.createTextNode("Go Home");
+            pResult.appendChild(resultText);
+
+            document.getElementById("resultAnchor").href="/home.html";
+
+            
+        }
+    </script>
+
+</body>
+</html>

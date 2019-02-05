@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Another Story</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <p>You got lung cancer.</p>
+    <p id="status"></p>
+    
+    <script>
+        var rng = Math.round(Math.random() * 100);
+        console.log(rng);
+
+        if(rng < 94) {
+            var pTag = document.getElementById("status");
+            var text = document.createTextNode("You didn't make it. THE END");
+            pTag.appendChild(text);
+
+            document.getElementById("death").
+        } else {
+            document.getElementById("survive").href="Smoke/smoke.html";
+        }
+    </script>
+
+</body>
+</html>
+
+94% of death
+<a href="index.html">Restart</a><br>
