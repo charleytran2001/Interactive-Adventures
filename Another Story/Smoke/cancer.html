@@ -20,25 +20,38 @@
     <p id="status">You got lung cancer</p>
     <p id="chance"></p>
     <a href="#" id="resultAnchor"><p id="result"></p></a>
+    <a href="#" id="die"><p id="die2"></p></a>
     
     <script>
+        // // Displays survival %
+        // function survival() {
+        //     var chance = document.getElementById("chance");
+        //     var survivalChance = document.createTextNode("You had a " + rng + "% chance of death.");
+        //     chance.appendChild(survivalChance);
+        // }
+
         // RNG System
-        var rng = Math.round(Math.random() * 100);
+        var chance = Math.round(Math.random() * 100);
+        console.log(chance);
+
+        var rng = Math.round(Math.random() * (84 - 54 + 1)) + 54;
         console.log(rng);
 
-        var chance = Math.round(Math.random() * (max - min + 1)) + min;
+        // RNG for Car Scenario
+        var carChance = Math.round(Math.random() * 100);
+        console.log(carChance);
+
+        var carRng = Math.round(Math.random() * (55 - 5 + 1)) + 5;
+        console.log(carRng);
 
         // RNG for survival.
-        if(rng < 94) {
+        if(chance < rng) {
             // Changes p tag
             var pTag = document.getElementById("status");
             var text = document.createTextNode(" and didn't make it. THE END");
             pTag.appendChild(text);
 
-            // Displays survival %
-            var chance = document.getElementById("chance");
-            var survivalChance = document.createTextNode("You had a " + rng + "% chance of survival.");
-            chance.appendChild(survivalChance);
+            // survival();
 
             // Changes anchor tag
             var pResult = document.getElementById("result");
@@ -49,21 +62,21 @@
 
         } else {
             var pTag = document.getElementById("status");
-            var text = document.createTextNode(", but you survived through it.");
+            var text = document.createTextNode(", but you survived. Lucky you.");
             pTag.appendChild(text);
 
-            // Displays survival %
-            var chance = document.getElementById("chance");
-            var survivalChance = document.createTextNode("You had a " + rng + "% chance of survival.");
-            chance.appendChild(survivalChance);
+            // survival();
 
             var pResult = document.getElementById("result");
             var resultText = document.createTextNode("Go Home");
             pResult.appendChild(resultText);
 
-            document.getElementById("resultAnchor").href="/home.html";
-
-            
+            // Car Scenario
+            if(carChance < carRng) {
+                document.getElementById("resultAnchor").href="../Go Home/car.html";
+            } else {
+                document.getElementById("resultAnchor").href="../Go Home/home.html";
+            }
         }
     </script>
 

@@ -25,25 +25,40 @@
     <a href="die.html">Die</a><br>
 
     <script>
-        var rng = Math.round(Math.random() * 100);
-        console.log(rng);
+        // // Displays survival %
+        // function survival() {
+        //     var chance = document.getElementById("chance");
+        //     var survivalChance = document.createTextNode("You had a " + rng + "% chance of death.");
+        //     chance.appendChild(survivalChance);
+        // }
+
+        // RNG System
+        var chance = Math.round(Math.random() * 100);
+        console.log(chance);
+
+        var rngSmoke = Math.round(Math.random() * (68 - 33 + 1)) + 33;
+        console.log(rngSmoke);
+        var rngLeave = Math.round(Math.random() * (76 - 39 + 1)) + 39;
+        console.log(rngLeave);
+        var rngBeatup= Math.round(Math.random() * (98 - 82 + 1)) + 82;
+        console.log(rngBeatup);
 
         // RNG for smoke
-        if(rng < 90) {
+        if(chance < rngSmoke) {
             document.getElementById("smoke").href="Smoke/cancer.html";
         } else {
             document.getElementById("smoke").href="Smoke/smoke.html";
         }
 
         // RNG for leave
-        if(rng < 37) {
+        if(chance < rngLeave) {
             document.getElementById("leave").href="Leave/followed.html";
         } else {
             document.getElementById("leave").href="Leave/leave.html";
         }
 
         // RNG for beat up
-        if(rng < 95) {
+        if(chance < rngBeatup) {
             document.getElementById("beatup").href="Beat Up/ouch.html";
         } else {
             document.getElementById("beatup").href="Beat Up/beatup.html";

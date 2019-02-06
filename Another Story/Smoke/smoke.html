@@ -17,26 +17,23 @@
     </style>
 </head>
 <body>
-    <p>You got lung cancer.</p>
-    <p id="status"></p>
-    
+    <p>You smoked it.</p>
+    <a href="#" id="resultAnchor">Go Home</a>
+
     <script>
-        var rng = Math.round(Math.random() * 100);
-        console.log(rng);
+        // RNG for Car Scenario
+        var carChance = Math.round(Math.random() * 100);
+        console.log(carChance);
 
-        if(rng < 94) {
-            var pTag = document.getElementById("status");
-            var text = document.createTextNode("You didn't make it. THE END");
-            pTag.appendChild(text);
+        var carRng = Math.round(Math.random() * (55 - 5 + 1)) + 5;
+        console.log(carRng);
 
-            document.getElementById("death").
+        if(carChance < carRng) {
+            document.getElementById("resultAnchor").href="../Go Home/car.html";
         } else {
-            document.getElementById("survive").href="Smoke/smoke.html";
+            document.getElementById("resultAnchor").href="../Go Home/home.html";
         }
     </script>
 
 </body>
 </html>
-
-94% of death
-<a href="index.html">Restart</a><br>
