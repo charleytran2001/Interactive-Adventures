@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Another Story</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover {
+            color: darkblue;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <p id="status">You left.</p><br>
+    <p id="chance"></p><br>
+    <a href="#" id="option1Anchor"><p id="option1PTag"></p></a>
+    <a href="#" id="option2Anchor"><p id="option2PTag"></p></a>
+    <a href="#" id="option3Anchor"><p id="option3PTag"></p></a>
+    <a href="#" id="dieAnchor"><p id="diePTag"></p></a>
+    
+    <script>
+        // Displays survival %
+        function survival() {
+            var chance = document.getElementById("chance");
+            var survivalChance = document.createTextNode("You had a " + (100 - rng) + "% chance of him not following you.");
+            chance.appendChild(survivalChance);
+        }
+
+        // RNG System
+        var chance = Math.round(Math.random() * 100);
+        console.log(chance);
+
+        // Chance being followed
+        var rng = Math.round(Math.random() * (56 - 39)) + 39;
+        console.log(rng);
+
+/*
+        // RNG System 2
+        var chance2 = Math.round(Math.random() * 100);
+        console.log(chance2);
+
+        // Chance of getting Lung Cancer 2
+        var rng2 = Math.round(Math.random() * (100 - 90)) + 90;
+        console.log(rng2);
+*/
+
+        // RNG for being followed
+        if(chance < rng) {
+            // Changes p tag
+            var statusPTag = document.getElementById("status");
+            var statusText = document.createTextNode(" He starts following you. What do you do?");
+            statusPTag.appendChild(statusText);
+
+            survival();
+
+            // Changes anchor tag
+            var option1PTag = document.getElementById("option1PTag");
+            var option1Text = document.createTextNode("Try to lose him");
+            option1PTag.appendChild(option1Text);
+            document.getElementById("option1Anchor").href="../Options 2/losehim.html";
+
+            var option2PTag = document.getElementById("option2PTag");
+            var option2Text = document.createTextNode("Confront him");
+            option2PTag.appendChild(option2Text);
+            document.getElementById("option2Anchor").href="../Options 2/confront.html";
+
+            var option3PTag = document.getElementById("option3PTag");
+            var option3Text = document.createTextNode("Ignore him");
+            option3PTag.appendChild(option3Text);
+            document.getElementById("option3Anchor").href="../Options 2/ignore.html";
+
+            var diePTag = document.getElementById("diePTag");
+            var dieText = document.createTextNode("Die");
+            diePTag.appendChild(dieText);
+            document.getElementById("dieAnchor").href="../die.html";
+        } else {
+            var statusPTag = document.getElementById("status");
+            var statusText = document.createTextNode(" While walking home, you realized you were hungry. What do you do?");
+            statusPTag.appendChild(statusText);
+
+            survival();
+
+            var option1PTag = document.getElementById("option1PTag");
+            var option1Text = document.createTextNode("Grab some fast food");
+            option1PTag.appendChild(option1Text);
+            document.getElementById("option1Anchor").href="../Options 2/fastfood.html";
+
+            var option2PTag = document.getElementById("option2PTag");
+            var option2Text = document.createTextNode("Go home and eat");
+            option2PTag.appendChild(option2Text);
+            document.getElementById("option2Anchor").href="../Options 2/homeandeat.html";
+
+            var option3PTag = document.getElementById("option3PTag");
+            var option3Text = document.createTextNode("Break into someone's house for food");
+            option3PTag.appendChild(option3Text);
+            document.getElementById("option3Anchor").href="../Options 2/breakinforfood.html";
+
+            var diePTag = document.getElementById("diePTag");
+            var dieText = document.createTextNode("Die");
+            diePTag.appendChild(dieText);
+            document.getElementById("dieAnchor").href="../die.html";
+        }
+    </script>
+
+</body>
+</html>

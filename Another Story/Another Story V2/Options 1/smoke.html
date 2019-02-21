@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Another Story</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover {
+            color: darkblue;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <p id="status"></p><br>
+    <p id="chance"></p><br>
+    <a href="#" id="option1Anchor"><p id="option1PTag"></p></a>
+    <a href="#" id="option2Anchor"><p id="option2PTag"></p></a>
+    <a href="#" id="dieAnchor"><p id="diePTag"></p></a>
+    
+    <script>
+        // Displays survival %
+        function survival() {
+            var chance = document.getElementById("chance");
+            var survivalChance = document.createTextNode("You had a " + (100 - rng) + "% chance of not dying from lung cancer.");
+            chance.appendChild(survivalChance);
+        }
+
+        // RNG System
+        var chance = Math.round(Math.random() * 100);
+        console.log(chance);
+
+        // Chance of getting Lung Cancer
+        var rng = Math.round(Math.random() * (100 - 60)) + 60;
+        console.log(rng);
+
+/*
+        // RNG System 2
+        var chance2 = Math.round(Math.random() * 100);
+        console.log(chance2);
+
+        // Chance of getting Lung Cancer 2
+        var rng2 = Math.round(Math.random() * (100 - 90)) + 90;
+        console.log(rng2);
+*/
+
+        // RNG for survival.
+        if(chance < rng) {
+            // Changes p tag
+            var statusPTag = document.getElementById("status");
+            var statusText = document.createTextNode("You got lung cancer and died. THE END");
+            statusPTag.appendChild(statusText);
+
+            survival();
+
+            // Changes anchor tag
+            var option1PTag = document.getElementById("option1PTag");
+            var option1Text = document.createTextNode("Restart");
+            option1PTag.appendChild(option1Text);
+            document.getElementById("option1Anchor").href="../index.html";
+
+        } else {
+            var statusPTag = document.getElementById("status");
+            var statusText = document.createTextNode("You smoked the cigarette. \"Wanna smoke another?\"");
+            statusPTag.appendChild(statusText);
+
+            survival();
+
+            var option1PTag = document.getElementById("option1PTag");
+            var option1Text = document.createTextNode("Smoke another");
+            option1PTag.appendChild(option1Text);
+            document.getElementById("option1Anchor").href="smoke.html";
+
+            var option2PTag = document.getElementById("option2PTag");
+            var option2Text = document.createTextNode("Leave");
+            option2PTag.appendChild(option2Text);
+            document.getElementById("option2Anchor").href="leave.html";
+
+            var diePTag = document.getElementById("diePTag");
+            var dieText = document.createTextNode("Die");
+            diePTag.appendChild(dieText);
+            document.getElementById("dieAnchor").href="../die.html";
+        }
+    </script>
+
+</body>
+</html>

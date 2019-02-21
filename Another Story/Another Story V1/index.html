@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Another Story</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        a:hover {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <p>You're walking home from school and then some sketchy ghetto guy comes up to you and asks if you want to smoke a cig. What
+    do you do?</p>
+    <a href="#" id="smoke">Smoke it</a><br>
+    <a href="#" id="leave">Ignore him and leave</a><br>
+    <a href="#" id="beatup">Beat him up</a><br>
+    <a href="#">Throw a fridge at him</a><br>
+    <a href="#"></a><br>
+    <a href="die.html">Die</a><br>
+
+    <script>
+        // // Displays survival %
+        // function survival() {
+        //     var chance = document.getElementById("chance");
+        //     var survivalChance = document.createTextNode("You had a " + rng + "% chance of death.");
+        //     chance.appendChild(survivalChance);
+        // }
+
+        // RNG System
+        var chance = Math.round(Math.random() * 100);
+        console.log(chance);
+
+        var rngSmoke = Math.round(Math.random() * (68 - 33 + 1)) + 33;
+        console.log(rngSmoke);
+        var rngLeave = Math.round(Math.random() * (76 - 39 + 1)) + 39;
+        console.log(rngLeave);
+        var rngBeatup= Math.round(Math.random() * (98 - 82 + 1)) + 82;
+        console.log(rngBeatup);
+
+        // RNG for smoke
+        if(chance < rngSmoke) {
+            document.getElementById("smoke").href="Smoke/cancer.html";
+        } else {
+            document.getElementById("smoke").href="Smoke/smoke.html";
+        }
+
+        // RNG for leave
+        if(chance < rngLeave) {
+            document.getElementById("leave").href="Leave/followed.html";
+        } else {
+            document.getElementById("leave").href="Leave/leave.html";
+        }
+
+        // RNG for beat up
+        if(chance < rngBeatup) {
+            document.getElementById("beatup").href="Beat Up/ouch.html";
+        } else {
+            document.getElementById("beatup").href="Beat Up/beatup.html";
+        }
+
+    </script>
+</body>
+</html>
