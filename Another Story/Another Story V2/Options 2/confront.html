@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Another Story</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        a:hover {
+            color: darkblue;
+        }
+        p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <p id="status">You confronted the man.</p><br>
+    <p id="chance"></p><br>
+    <a href="#" id="option1Anchor"><p id="option1PTag"></p></a>
+    <a href="#" id="option2Anchor"><p id="option2PTag"></p></a>
+    <a href="#" id="option3Anchor"><p id="option3PTag"></p></a>
+    <a href="#" id="dieAnchor"><p id="diePTag"></p></a>
+    
+    <script>
+        // Displays survival %
+        function survival() {
+            var chance = document.getElementById("chance");
+            var survivalChance = document.createTextNode("You had a " + (100 - rng) + "% chance of not having a gun pulled on you.");
+            chance.appendChild(survivalChance);
+        }
+        function survival2() {
+            var chance = document.getElementById("chance");
+            var survivalChance = document.createTextNode(" You had a " + (100 - rng2) + "% chance of not being shot immediately.");
+            chance.appendChild(survivalChance);
+        }
+        function survival3() {
+            var chance = document.getElementById("chance");
+            var survivalChance = document.createTextNode(" You had a " + (100 - rng3) + "% chance of not getting nuked.");
+            chance.appendChild(survivalChance);
+        }
+        // RNG System
+        var chance = Math.round(Math.random() * 100);
+        console.log(chance);
+        // Chance of gun being pulled
+        var rng = Math.round(Math.random() * (50 - 25)) + 25;
+        console.log(rng);
+        // RNG System 2
+        var chance2 = Math.round(Math.random() * 100);
+        console.log(chance2);
+        // Chance of getting shot immediately
+        var rng2 = Math.round(Math.random() * (70 - 50)) + 50;
+        console.log(rng2);
+        // RNG System 3
+        var chance3 = Math.round(Math.random() * 100);
+        console.log(chance3);
+        // Chance of being nuked
+        var rng3 = Math.round(Math.random() * (85 - 77)) + 77;
+        console.log(rng3);
+        // RNG for gun pulled
+        if(chance < rng) {
+            // RNG for being shot
+            if(chance2 < rng2) {
+                // Changes p tag
+                var statusPTag = document.getElementById("status");
+                var statusText = document.createTextNode(" He pulled a gun on you. He shot you. You died. THE END");
+                statusPTag.appendChild(statusText);
+                survival();
+                survival2();
+                // Changes anchor tag
+                var option1PTag = document.getElementById("option1PTag");
+                var option1Text = document.createTextNode("Restart");
+                option1PTag.appendChild(option1Text);
+                document.getElementById("option1Anchor").href = "../index.html";
+            } else {
+                // RNG for being nuked
+                if(chance3 < rng3) {
+                    // Changes p tag
+                    var statusPTag = document.getElementById("status");
+                    var statusText = document.createTextNode("He pulled a gun on you. You also got nuked. You died. THE END");
+                    statusPTag.appendChild(statusText);
+                    survival();
+                    survival2();
+                    survival3();
+                    // Changes anchor tag
+                    var option1PTag = document.getElementById("option1PTag");
+                    var option1Text = document.createTextNode("Restart");
+                    option1PTag.appendChild(option1Text);
+                    document.getElementById("option1Anchor").href = "../index.html";
+                } else {
+                    // RNG for having gun pulled and not nuked
+                    var statusPTag = document.getElementById("status");
+                    var statusText = document.createTextNode(" He pulled a gun on you. What do you do now?");
+                    statusPTag.appendChild(statusText);
+                    survival();
+                    survival2();
+                    survival3();
+                    var option1PTag = document.getElementById("option1PTag");
+                    var option1Text = document.createTextNode("Run");
+                    option1PTag.appendChild(option1Text);
+                    document.getElementById("option1Anchor").href = "../Options 3/run.html";
+                    var option2PTag = document.getElementById("option2PTag");
+                    var option2Text = document.createTextNode("Attack them");
+                    option2PTag.appendChild(option2Text);
+                    document.getElementById("option2Anchor").href = "../Options 3/attack.html";
+                    var option3PTag = document.getElementById("option3PTag");
+                    var option3Text = document.createTextNode("Run to their fridge and take some food");
+                    option3PTag.appendChild(option3Text);
+                    document.getElementById("option3Anchor").href = "../Options 3/takefoodfromfridge.html";
+                    var diePTag = document.getElementById("diePTag");
+                    var dieText = document.createTextNode("Die");
+                    diePTag.appendChild(dieText);
+                    document.getElementById("dieAnchor").href = "../die.html";
+                }
+            }
+        } else {
+            // RNG for successfully opening fridge
+            if (chance2 < rng) {
+                var statusPTag = document.getElementById("status");
+                var statusText = document.createTextNode(", no one's home. The alarm starts going off. What do you do?");
+                statusPTag.appendChild(statusText);
+                survival();
+                survival3();
+                var option1PTag = document.getElementById("option1PTag");
+                var option1Text = document.createTextNode("Run");
+                option1PTag.appendChild(option1Text);
+                document.getElementById("option1Anchor").href = "../Options 3/run.html";
+                var option2PTag = document.getElementById("option2PTag");
+                var option2Text = document.createTextNode("Attempt to disarm the alarm");
+                option2PTag.appendChild(option2Text);
+                document.getElementById("option2Anchor").href = "../Options 3/disarm.html";
+                var option3PTag = document.getElementById("option3PTag");
+                var option3Text = document.createTextNode("Run to their fridge and take some food");
+                option3PTag.appendChild(option3Text);
+                document.getElementById("option3Anchor").href = "../Options 3/takefoodfromfridge.html";
+                var diePTag = document.getElementById("diePTag");
+                var dieText = document.createTextNode("Die");
+                diePTag.appendChild(dieText);
+                document.getElementById("dieAnchor").href = "../die.html";
+            } else {
+                var statusPTag = document.getElementById("status");
+                var statusText = document.createTextNode(", no one's home. What do you do?");
+                statusPTag.appendChild(statusText);
+                survival();
+                survival3();
+                var option1PTag = document.getElementById("option1PTag");
+                var option1Text = document.createTextNode("Go to their fridge and take some food");
+                option1PTag.appendChild(option1Text);
+                document.getElementById("option1Anchor").href = "../Options 3/casuallytakefoodfromfridge.html";
+                var option2PTag = document.getElementById("option2PTag");
+                var option2Text = document.createTextNode("Look around for valuables");
+                option2PTag.appendChild(option2Text);
+                document.getElementById("option2Anchor").href = "../Options 3/valuables.html";
+                var option3PTag = document.getElementById("option3PTag");
+                var option3Text = document.createTextNode("Leave");
+                option3PTag.appendChild(option3Text);
+                document.getElementById("option3Anchor").href = "../Options 3/run.html";
+                var diePTag = document.getElementById("diePTag");
+                var dieText = document.createTextNode("Die");
+                diePTag.appendChild(dieText);
+                document.getElementById("dieAnchor").href = "../die.html";
+            }
+        }
+    </script>
+
+</body>
+</html>
